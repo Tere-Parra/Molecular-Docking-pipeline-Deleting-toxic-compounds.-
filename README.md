@@ -140,7 +140,7 @@ tleap -f leap_script.in
    
    With the construction of the minimized parameters and the clean protein we can minimize the protein
    
-``` bash 
+``` bash
 sander -O -i minimize.in -o minimize.out -p protein.prmtop -c protein.inpcrd -r minimized_structure.rst
 ``` 
 Finally, to prepare the enzymes, polar hydrogens were added to the proteins, the non-polar were merged and the charges were assigned as the Vina tutorial says. 
@@ -149,7 +149,34 @@ Finally, to prepare the enzymes, polar hydrogens were added to the proteins, the
 
 The active site of the Pseudomonas enzyme is in a contact site of a homodimer of the enzyme. Where the cofactor riboflavin 5′-phosphate or FMN is responsible for positioning the substrate for oxidation.  So, the docking box was placed where the FMN molecule was located. 
 
+a)	We need to convert the minimized structure to an appropriate entry to vina.
+
+``` bash
+ambpdb -p protein.prmtop < minimized_structure.rst >  minimized_structure.pdb
+```
+
+b)	Create a configuration (conf.txt) entry to Vina. 
+
+``` bash
+receptor = minimized_structure.pdb
+ligand = ligand.pdb
+center_x = 0.0
+center_y = 0.0
+center_z = 0.0
+size_x = 20.0
+size_y = 20.0
+size_z = 20.0
+exhaustiveness = 8
+``` 
+
 Here, we decided to use a square box with 20 points in all the directions and spacing of one angstrom. Finally, the docking was run using the software Autodock Vina.
+We are going to use Autodock 4. We download the configuration box (conf.txt) from the software and perform the docking with:
+
+``` bash
+vina --config vina_config.txt --out docking_results.pdbqt --log docking_log.txt
+``` 
+Keep in mind that: You need to specify the receptor or protein file in your conf.txt configuration file. In the conf.txt file, there should be a line that specifies the receptor (as in the example)
+
 
 
 
