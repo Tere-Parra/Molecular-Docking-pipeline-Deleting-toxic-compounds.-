@@ -177,6 +177,16 @@ vina --config vina_config.txt --out docking_results.pdbqt --log docking_log.txt
 ``` 
 Keep in mind that: You need to specify the receptor or protein file in your conf.txt configuration file. In the conf.txt file, there should be a line that specifies the receptor (as in the example)
 
+## STEP 4 RESULTS OF DOCKING ANALYSIS
+
+The results of the coupling of the enzyme with the two dyes studied by Autodock Vina were visualized through the Discovery Studio 2021 platform. 
+These results were evaluated considering three important points:
+
+i)	The interacting residues of each pose contain any of the residues marked in the alignment.
+
+ii)	 The affinity energy
+
+iii)	 The type of interactions that the residues present with the molecules. Therefore, the selected poses have at least one of the residues marked by multiple alignments, stable binding energy, and present the highest amount of hydrogen bonds between the complex enzyme-ligand.
 
 
 
