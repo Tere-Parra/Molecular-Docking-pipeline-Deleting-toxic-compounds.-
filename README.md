@@ -32,15 +32,20 @@ The structures of the colorimetric compounds were searched in the public databas
 The molecular structures of the two dyes were downloaded and optimized using electronic structure calculations with Python software (Rdkit library) with the Merck Molecular Force Field (MMFF).
 
 
-``` Phyton
-#Install RDkit with anaconda enviroment 
-conda install -c conda-forge rdkit
+``` bash
 
-#import libraries from my browser 
+#Install RDkit with anaconda environment 
+conda install -c conda-forge rdkit
+```
+
+``` Python 
+#import libraries from my browser
+
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
 #Molecule to minimize (Blue indigo)
+
 m= Chem.MolFromSmiles('C1=CC=C2C(=C1)C(=C(N2)C3=NC4=CC=CC=C4C3=O)O')
 m
 
@@ -49,9 +54,11 @@ m2=Chem.AddHs(m)
 AllChem.EmbedMolecule(m2)
 
 #Optimize molecule -> MMFF (Merck Molecular Force Field)
+
 AllChem.MMFFOptimizeMolecule(m2)
 
-#Import molecule optimized 
+#Import molecule optimized
+
 from rdkit.Chem import Draw
 img = Draw.MolToImage(m2)
 img.show()
