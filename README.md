@@ -192,6 +192,13 @@ Molecular docking with indigo blue azo dye:
 
 ![Molecular docking with indigo blue azo dye](indigo_blue.png)
 
+## CREDITS
+
+AZOYAC- CONCYTEP (2022, IGEM Design League project) https://app.jogl.io/project/762
+
+Consejo de Ciencia y Technologia del Estado de Puebla  (CONCYTEP, 2023, October 31). CONCYTEP. https://concytep.gob.mx/
+
+‌
 
 
 
