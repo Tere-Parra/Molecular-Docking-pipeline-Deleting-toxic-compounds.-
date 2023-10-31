@@ -95,6 +95,53 @@ print ("Vibrational Frequencies:", psi4_freqs)
 ```
 After the optimization, the ligands were prepared for docking using the Autodock Tool. The polar hydrogens and the partial charges were added, as the tutorial of Autodock Vina says. The ligands were prepared flexibly in both structures.
 
+## Step 2: PROTEINS SEQUENCES, STRUCTURE REFINEMENT, AND PREPARATION
+
+The azoreductases selected were identified in the NCBI database. After, in the Protein Data Bank, the sequence was searched, to download the crystallographic resolve structure of the enzymes to work with them (PDB ID: 4C0X). The structure of the protein was first cleaned and optimized to generate the input structure for docking.
+
+Protein optimization was carried out using AMBER software (https://ambermd.org/). The charges used for the protein were assigned using the AMBER ff14SB force field for standard residues (remember to download the molecule without water molecules, here we do not exclude the FMN ligand from the protein. FMN is needed to perform the analysis) and the Gasteiger charges for no standard residues (Autodock vina).
+
+The goal of energy Minimization of protein structure is to find a set of coordinates for each atom that forms the polypeptide to represent its conformation in a minimum energy value (You can use Quimera software to minimize the protein. It Is an easier approach) 
+
+a)	Minimize parameter (minimize.in file)
+Create the file minimize.in file 
+
+``` bash
+&cntrl
+ imin = 1,      ! Energy minimization
+ maxcyc = 5000,  ! Maximum number of minimization steps
+ ncyc = 2500,    ! Print frequency for information
+ ntb = 0,        ! No periodic boundary conditions.
+ cut = 10.0,     ! Nonbonded cutoff
+ ntr = 0,        ! No restraint
+ /
+``` 
+b)	Load the PDB file. 
+
+We are going to create a script to generate protein.prmtop and protein.inpcrd 
+
+ ``` bash
+#Indicate the name of the Force Field to use
+source leaprc.ff14SB (Force Field)
+
+# Load the PDB file
+protein = loadPdb azo.pdb
+
+# Create the parameter and topology files
+saveAmberParm protein protein.prmtop protein.inpcrd
+
+#Run the script
+tleap -f leap_script.in
+```
+
+3) Minimize the protein.
+   
+   With the construction of the minimized parameters and the clean protein we can minimize the protein
+   
+``` bash 
+sander -O -i minimize.in -o minimize.out -p protein.prmtop -c protein.inpcrd -r minimized_structure.rst
+``` 
+Finally, to prepare the enzymes, polar hydrogens were added to the proteins, the non-polar were merged and the charges were assigned as the Vina tutorial says. 
 
 
 
