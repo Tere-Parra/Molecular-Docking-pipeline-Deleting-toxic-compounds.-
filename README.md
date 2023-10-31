@@ -101,7 +101,9 @@ The azoreductases selected were identified in the NCBI database. After, in the P
 
 Protein optimization was carried out using AMBER software (https://ambermd.org/). The charges used for the protein were assigned using the AMBER ff14SB force field for standard residues (remember to download the molecule without water molecules, here we do not exclude the FMN ligand from the protein. FMN is needed to perform the analysis) and the Gasteiger charges for no standard residues (Autodock vina).
 
-The goal of energy Minimization of protein structure is to find a set of coordinates for each atom that forms the polypeptide to represent its conformation in a minimum energy value (You can use Quimera software to minimize the protein. It Is an easier approach) 
+The goal of energy Minimization of protein structure is to find a set of coordinates for each atom that forms the polypeptide to represent its conformation in a minimum energy value
+
+**You can use Quimera software to minimize the protein. It Is an easier approach**
 
 a)	Minimize parameter (minimize.in file)
 Create the file minimize.in file 
