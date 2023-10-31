@@ -188,6 +188,8 @@ ii)	 The affinity energy
 
 iii)	 The type of interactions that the residues present with the molecules. Therefore, the selected poses have at least one of the residues marked by multiple alignments, stable binding energy, and present the highest amount of hydrogen bonds between the complex enzyme-ligand.
 
+Molecular docking with indigo blue azo dye:
+
 ![Molecular docking with indigo blue azo dye](indigo_blue.png)
 
 
